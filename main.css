@@ -1,0 +1,60 @@
+body {
+    background-color: rgb(139, 195, 221);
+    color: rgb(78, 15, 129);
+    font-family: Arial;
+    margin: 0px;
+    text-decoration: none;
+}
+header {
+    padding: 10px; 
+    font-size: 16pt;
+}
+footer {
+    padding: 10px; 
+    font-size: 16pt;
+    position: fixed;
+    text-align: right;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+main {
+    padding: 10px; 
+    font-size: 16pt;
+    margin: 10px 20px 45px;
+}
+a {text-decoration: none;
+    transition: 0.5s 1s;
+    }
+
+a:link {
+    color: rgb(115, 19, 194);
+}
+a:visited {
+    color: lightblue;
+}
+
+a:hover {
+    color: rgb(78, 15, 129);
+    text-decoration: none;
+    transition: 0.3s;
+}
+a:active {
+    color: black;
+    opacity: 0.3;
+}
+
+div.menu {
+    border: 3px solid;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+}
+div.menu:hover {
+    background-color: skyblue;
+    box-shadow: 0 0 10px gray;
+}
+
+h1.Заголовок {
+    text-align: center;
+}
