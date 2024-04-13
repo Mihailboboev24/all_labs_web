@@ -1,6 +1,6 @@
 body {
-    background-color: rgb(139, 195, 221);
-    color: rgb(78, 15, 129);
+    background-color: rgb(231, 255, 176);
+    color: rgb(5, 113, 255);
     font-family: Arial;
     margin: 0px;
     text-decoration: none;
@@ -31,12 +31,12 @@ a:link {
     color: rgb(115, 19, 194);
 }
 a:visited {
-    color: lightblue;
+    color: rgb(3, 255, 45);
 }
 
 a:hover {
-    color: rgb(78, 15, 129);
-    text-decoration: none;
+    color: rgb(255, 0, 0);
+    text-decoration: underline;
     transition: 0.3s;
 }
 a:active {
