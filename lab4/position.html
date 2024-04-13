@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Бобоев Михаил Ниматбоевич. Лабораторная 4</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="favicon">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon-32x32.png">
+        <link rel="icon" href="favicon-48x48.png">
+    <style>
+            div {
+                width: 300px;
+                height: 70px;
+                line-height: 70px;
+                text-align: center;
+                background-color: rgb(185, 0, 0);
+                border: 1px dotted rgb(2, 117, 184);
+                margin: 15px;
+            }
+            .position-relative {
+                position: relative;
+                left: 30px;
+                top: -150px;
+                z-index: 1; 
+            }
+
+            div:not(.position-relative):hover {
+                z-index: 0; 
+            }
+
+    </style>
+    </head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4 
+    </header>
+
+    <main>
+        <div>static</div>
+        <div>static</div>
+        <div class="position-relative">relative</div>
+        <div>static</div>
+        <div>static</div>
+        <div class="position-absolute">absolute</div>
+        <div>static</div>
+        <div>static</div>
+        <div>static</div>
+        <div>static</div>
+    </main>
+
+    
+    
+    </body>
+    <footer>
+        <hr>
+        &copy; Бобоев Михаил, ФБИ-24, 2 курс, 2024
+    </footer>
+</html>
