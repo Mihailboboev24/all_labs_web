@@ -45,14 +45,14 @@ a:active {
 }
 
 div.menu {
-    border: 3px solid;
+    border: 6px solid;
     border-radius: 5px;
     width: 300px;
     margin: 0 auto;
 }
 div.menu:hover {
-    background-color: skyblue;
-    box-shadow: 0 0 10px gray;
+    background-color: rgb(250, 192, 0);
+    box-shadow: 0 0 10px rgb(255, 10, 10);
 }
 
 h1.Заголовок {
