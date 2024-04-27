@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Бобоев Михаил Ниматбоевич. Лабораторная 5</title>
+        <link rel="styleheet" hpef="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+
+    <script>
+            function calculateTotal() {
+                let total = 0;
+                total += parseInt(document.getElementById("price1").textContent) * parseInt(document.getElementById("quantity1").value);
+                total += parseInt(document.getElementById("price2").textContent) * parseInt(document.getElementById("quantity2").value);
+                total += parseInt(document.getElementById("price3").textContent) * parseInt(document.getElementById("quantity3").value);
+                total += parseInt(document.getElementById("price4").textContent) * parseInt(document.getElementById("quantity4").value);
+                total += parseInt(document.getElementById("price5").textContent) * parseInt(document.getElementById("quantity5").value);
+                document.getElementById("total").textContent = total;
+            }
+    
+            function clearCart() {
+                document.querySelectorAll('input[type="number"]').forEach(input => input.value = "");
+                document.getElementById("total").textContent = "0";
+            }
+    
+            function showMSG() {
+                let msg = 'Приветствую на этой странице!'
+                alert(msg);
+            }
+    </script>
+
+    <style>
+        .product {
+            border: 1px solid #0127ff;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 500px;
+            height: 120px;
+        }
+        .product input {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <header onclick="showAuthor()">
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <div class="product">
+            <h3>Яблоки</h3>
+            <p>Цена: <span id="price1">100</span> руб.</p>
+            <label>Количество: <input type="number" id="quantity1" value="0" min="0" placeholder="Сколько яблок?"></label>
+        </div>
+        <div class="product">
+            <h3>Бананы</h3>
+            <p>Цена: <span id="price2">200</span> руб.</p>
+            <label>Количество: <input type="number" id="quantity2" value="0" min="0" placeholder="Сколько бананов?"></label>
+        </div>
+        <div class="product">
+            <h3>Кокосы</h3>
+            <p>Цена: <span id="price3">150</span> руб.</p>
+            <label>Количество: <input type="number" id="quantity3" value="0" min="0" placeholder="Сколько кокосов?"></label>
+        </div>
+        <div class="product">
+            <h3>Сыр моцарелла</h3>
+            <p>Цена: <span id="price4">409</span> руб.</p>
+            <label>Количество: <input type="number" id="quantity4" value="0" min="0" placeholder="Сколько головок сыра?"></label>
+        </div>
+        <div class="product">
+            <h3>Филе индейки</h3>
+            <p>Цена: <span id="price5">700</span> руб.</p>
+            <label>Количество: <input type="number" id="quantity5" value="0" min="0" placeholder="Сколько филе?"></label>
+        </div>
+        <button onclick="calculateTotal()">Рассчитать</button>
+        <button onclick="clearCart()">Очистить</button>
+        <p>Общая сумма: <span id="total">0</span> руб.</p>
+    </main>
+
+    <footer ondblclick="showMSG()">
+        &copy; Бобоев Михаил Ниматбоевич, ФБИ-24, 2 курс, 2024
+    </footer>
+
+</body>
+</html>
