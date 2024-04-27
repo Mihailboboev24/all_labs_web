@@ -18,6 +18,7 @@
                 const grayscale = document.getElementById('grayscale-value').value + '%';
                 const hueRotate = document.getElementById('hue-rotate-value').value + 'deg';
                 const invert = document.getElementById('invert-value').value + '%';
+                const saturate = document.getElementById('saturate-value').value + '%';
 
                 image.style.filter = `
                 blur(${blur})
@@ -26,6 +27,7 @@
                 grayscale(${grayscale})
                 hue-rotate(${hueRotate})
                 invert(${invert})
+                saturate(${saturate})
                 `;
             }
     </script>
@@ -60,6 +62,10 @@
         <div class="filter-container">
             <label for="invert-value">Инверсия:</label>
             <input type="range" min="0" max="100" value="0" id="invert-value" onchange="applyFilters()">
+        </div>
+        <div class="filter-container">
+            <label for="saturate-value">Насыщенность:</label>
+            <input type="range" min="0" max="200" value="100" id="saturate-value" onchange="applyFilters()">
         </div>
 
         <div id="image-container">
