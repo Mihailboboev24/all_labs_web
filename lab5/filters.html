@@ -17,6 +17,7 @@
                 const contrast = document.getElementById('contrast-value').value + '%';
                 const grayscale = document.getElementById('grayscale-value').value + '%';
                 const hueRotate = document.getElementById('hue-rotate-value').value + 'deg';
+                const invert = document.getElementById('invert-value').value + '%';
 
                 image.style.filter = `
                 blur(${blur})
@@ -24,6 +25,7 @@
                 contrast(${contrast})
                 grayscale(${grayscale})
                 hue-rotate(${hueRotate})
+                invert(${invert})
                 `;
             }
     </script>
@@ -54,6 +56,10 @@
         <div class="filter-container">
             <label for="hue-rotate-value">Изменение цвета:</label>
             <input type="range" min="0" max="360" value="0" id="hue-rotate-value" onchange="applyFilters()">
+        </div>
+        <div class="filter-container">
+            <label for="invert-value">Инверсия:</label>
+            <input type="range" min="0" max="100" value="0" id="invert-value" onchange="applyFilters()">
         </div>
 
         <div id="image-container">
