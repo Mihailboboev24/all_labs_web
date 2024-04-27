@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бобоев Михаил Ниматбоевич. Лабораторная 5</title>
+    <link rel="styleheet" hpef="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-48x48.png">
+
+    
+
+    <style>
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #ff0000;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+            position: absolute;
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <header onclick="showAuthor()">
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <div class="circle" style="background-color: #ff0000;"></div>
+        <div class="circle" style="background-color: #ff6600;"></div>
+        <div class="circle" style="background-color: #e5ff00;"></div>
+        <div class="circle" style="background-color: #a6ff00;"></div>
+        <div class="circle" style="background-color: #00ff2a;"></div>
+        <div class="circle" style="background-color: #00ffff;"></div>
+        <div class="circle" style="background-color: #0051ff;"></div>
+        <div class="circle" style="background-color: #2600ff;"></div>
+        <div class="circle" style="background-color: #ff00f2;"></div>
+        <div class="circle" style="background-color: #ff0055;"></div>
+        <button id="restoreButton">Вернуть круги</button>
+    </main>
+
+    <footer>
+        &copy; Бобоев Михаил Ниматбоевич, ФБИ-24, 2 курс, 2024
+    </footer>
+
+    <script>
+        const circles = document.querySelectorAll('.circle');
+        const restoreButton = document.getElementById('restoreButton');
+
+        circles.forEach((circle, index) => {
+            circle.textContent = index + 1;
+            circle.style.left = `${Math.floor(Math.random() * (window.innerWidth - 100))}px`;
+            circle.style.top = `${Math.floor(Math.random() * (window.innerHeight - 100))}px`;
+
+            circle.addEventListener('click', () => {
+                circle.style.width = '0';
+                circle.style.height = '0';
+                circle.style.opacity = '0';
+            });
+        });
+
+        restoreButton.addEventListener('click', () => {
+            circles.forEach(circle => {
+                circle.style.width = '100px';
+                circle.style.height = '100px';
+                circle.style.opacity = '1';
+            });
+        });
+    </script>
+</body>
+</html>
