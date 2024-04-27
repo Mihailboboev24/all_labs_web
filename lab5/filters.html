@@ -16,12 +16,14 @@
                 const brightness = document.getElementById('brightness-value').value + '%';
                 const contrast = document.getElementById('contrast-value').value + '%';
                 const grayscale = document.getElementById('grayscale-value').value + '%';
-                
+                const hueRotate = document.getElementById('hue-rotate-value').value + 'deg';
+
                 image.style.filter = `
                 blur(${blur})
                 brightness(${brightness})
                 contrast(${contrast})
                 grayscale(${grayscale})
+                hue-rotate(${hueRotate})
                 `;
             }
     </script>
@@ -49,7 +51,11 @@
             <label for="grayscale-value">Баланс серого:</label>
             <input type="range" min="0" max="100" value="0" id="grayscale-value" onchange="applyFilters()">
         </div>
-        
+        <div class="filter-container">
+            <label for="hue-rotate-value">Изменение цвета:</label>
+            <input type="range" min="0" max="360" value="0" id="hue-rotate-value" onchange="applyFilters()">
+        </div>
+
         <div id="image-container">
             <div><img src="TheWitcher3.webp" id="image"></div>
     </main>
