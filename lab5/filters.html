@@ -15,11 +15,13 @@
                 const blur = document.getElementById('blur-value').value + 'px';
                 const brightness = document.getElementById('brightness-value').value + '%';
                 const contrast = document.getElementById('contrast-value').value + '%';
+                const grayscale = document.getElementById('grayscale-value').value + '%';
                 
                 image.style.filter = `
                 blur(${blur})
                 brightness(${brightness})
                 contrast(${contrast})
+                grayscale(${grayscale})
                 `;
             }
     </script>
@@ -42,6 +44,10 @@
         <div class="filter-container">
             <label for="contrast-value">Контраст:</label>
             <input type="range" min="0" max="200" value="100" id="contrast-value" onchange="applyFilters()">
+        </div>
+        <div class="filter-container">
+            <label for="grayscale-value">Баланс серого:</label>
+            <input type="range" min="0" max="100" value="0" id="grayscale-value" onchange="applyFilters()">
         </div>
         
         <div id="image-container">
