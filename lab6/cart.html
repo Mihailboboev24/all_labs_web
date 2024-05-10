@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Бобоев Михаил Ниматбоевич. Лабораторная 6</title>
+        <link rel="styleheet" hpef="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 50%;
+                margin: 20px auto;
+            }
+            th, td {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            #result {
+                margin-top: 20px;
+            }
+        </style>
+
+<script>
+    function calculateTotal() {
+        var balance = document.getElementById('balance').value;
+        var total = 0;
+        var cart = document.getElementById('cart');
+        var rows = cart.rows;
+
+        for (var i = 1; i < rows.length; i++) {
+            var quantity = parseInt(rows[i].querySelector('.quantity').value);
+            if (!isNaN(quantity) && quantity > 0) {
+                total += quantity * parseInt(rows[i].cells[2].innerText);
+            } else if (quantity < 0) {
+                alert('Количество товара не может быть отрицательным!');
+                return;
+            }
+        }
+
+        if (total === 0) {
+            alert('Выберите хотя бы один товар!');
+            return;
+        }
+
+        if (balance === '') {
+            alert('Укажите ваш баланс!');
+            return;
+        }
+
+        balance = parseInt(balance);
+        if (isNaN(balance)) {
+            alert('Баланс должен быть числом!');
+            return;
+        }
+
+        if (total > balance) {
+            document.getElementById('result').innerHTML = 'Ошибка: Недостаточно средств на балансе!';
+        } else {
+            document.getElementById('result').innerHTML = 'Заказ успешно оформлен. Сумма: ' + total;
+        }
+    }
+</script>
+</head>
+<body>
+      <header>
+            НГТУ, ФБ, Лабораторная работа 6
+      </header>
+
+      <main>
+        <input type="number" id="balance" placeholder="Мой баланс">
+    <br><br>
+    <table id="cart">
+        <tr>
+            <th>Товар</th>
+            <th>Количество</th>
+            <th>Цена</th>
+        </tr>
+        <tr>
+            <td>Колбаса</td>
+            <td><input type="number" class="quantity" value="0"></td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Сыр</td>
+            <td><input type="number" class="quantity" value="0"></td>
+            <td>150</td>
+        </tr>
+        <tr>
+            <td>Молоко</td>
+            <td><input type="number" class="quantity" value="0"></td>
+            <td>79</td>
+        </tr>
+        <tr>
+            <td>Майонез</td>
+            <td><input type="number" class="quantity" value="0"></td>
+            <td>99</td>
+        </tr>
+        <tr>
+            <td>Кальмары</td>
+            <td><input type="number" class="quantity" value="0"></td>
+            <td>799</td>
+        </tr>
+    </table>
+    <button onclick="calculateTotal()">ОК</button>
+    <div id="result"></div>
+      </main>
+
+      <footer>
+        &copy; Бобоев Михаил Ниматбоевич, ФБИ-24, 2 курс, 2024
+      </footer>
+</body>
+</html>
