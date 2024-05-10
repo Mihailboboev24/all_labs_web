@@ -19,6 +19,15 @@
                 background-color: #a3d8e6; 
                 box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
             }
+            .rules {
+                border: 2px solid #cfffd5; 
+                border-radius: 10px; 
+                width: 300px; 
+                padding: 20px; 
+                margin: auto; 
+                background-color: #0085aa; 
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+            }
         </style>
         <script>
             let number;
@@ -62,6 +71,21 @@
                     count = 0;
                     document.getElementById('result').innerHTML = '';
             }
+            function toggleRulesVisibility(show) {
+                var rulesBlock = document.getElementById('rules');
+                var showBtn = document.getElementById('show-rules-btn');
+                var hideBtn = document.getElementById('hide-rules-btn');
+        
+             if (show) {
+                rulesBlock.style.display = 'block';
+                showBtn.style.display = 'none';
+                hideBtn.style.display = 'block';
+            } else {
+                rulesBlock.style.display = 'none';
+                showBtn.style.display = 'block';
+                hideBtn.style.display = 'none';
+            }
+        }
         </script>
 </head>
 <body>
@@ -97,6 +121,20 @@
             </div>
         </div>
         
+        <div class="rules" id="rules-block">
+            <button id="show-rules-btn" onclick="toggleRulesVisibility(true)">Показать правила игры</button>
+            <button id="hide-rules-btn" style="display: none;" onclick="toggleRulesVisibility(false)">Скрыть правила игры</button>
+            <div id="rules" style="display: none; margin-top: 10px;">
+                <h2>Правила игры:</h2>
+                <ol>
+                    <li>Выбирается число от 1 до 100.</li>
+                    <li>Игрок пытается угадать это число, вводя свой вариант.</li>
+                    <li>Если введенное число больше загаданного, игроку сообщается об этом.</li>
+                    <li>Если введенное число меньше загаданного, игроку также сообщается об этом.</li>
+                    <li>Игра продолжается до тех пор, пока игрок не угадает число.</li>
+                </ol>
+            </div>
+        </div>
       </main>
 
       <footer>
