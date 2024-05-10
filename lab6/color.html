@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Бобоев Михаил Ниматбоевич. Лабораторная 6</title>
+        <link rel="styleheet" hpef="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../favicon-32x32.png">
+        <link rel="icon" href="../favicon-48x48.png">
+
+        <style>
+            .color {
+                width: 200px;
+                height: 200px;
+                background-color: #ff0000; 
+                color: #fff; 
+                text-align: center;
+                line-height: 200px; 
+                font-size: 20px;
+                cursor: pointer;
+                border-radius: 10px;
+                margin: 20px auto;
+            }
+        </style>
+
+<script>
+    function changeColor(div) {
+        var textColor;
+        if (div.style.backgroundColor == 'yellow') {
+            div.style.backgroundColor = 'red';
+            textColor = 'white'; 
+            document.getElementById('color-name').innerHTML = 'красный';
+        }
+        else if (div.style.backgroundColor == 'red') {
+            div.style.backgroundColor = 'black';
+            textColor = 'white'; 
+            document.getElementById('color-name').innerHTML = 'чёрный';
+        }
+        else if (div.style.backgroundColor == 'black') {
+            div.style.backgroundColor = 'purple';
+            textColor = 'white'; 
+            document.getElementById('color-name').innerHTML = 'фиолетовый';
+        }
+        else if (div.style.backgroundColor == 'purple') {
+            div.style.backgroundColor = 'green';
+            textColor = 'black'; 
+            document.getElementById('color-name').innerHTML = 'зелёный';
+        }
+        else {
+            div.style.backgroundColor = 'yellow';
+            textColor = 'black'; 
+            document.getElementById('color-name').innerHTML = 'жёлтый';
+        }
+        
+        
+        div.style.color = textColor;
+
+        
+        div.style.transition = 'background-color 0.5s, color 0.5s';
+    }
+</script>
+
+</head>
+<body>
+      <header>
+            НГТУ, ФБ, Лабораторная работа 6
+      </header>
+
+      <main>
+        <div class="color" ondblclick="changeColor(this)">
+            Цвет: <span id="color-name">красный</span><br>
+            Сделайте двойной щелчок, чтобы сменить.
+        </div>
+      </main>
+
+      <footer>
+        &copy; Бобоев Михаил Ниматбоевич, ФБИ-24, 2 курс, 2024
+      </footer>
+</body>
+</html>
