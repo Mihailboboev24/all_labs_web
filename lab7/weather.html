@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бобоев Михаил Ниматбоевич. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-48x48.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<header>
+    НГТУ, ФБ, Лабораторная работа 7
+</header>
+
+<main>
+    <div id="weather_data"></div>
+</main>
+
+<footer>
+    &copy; Бобоев Михаил Ниматбоевич, ФБИ-24, 2 курс, 2024
+</footer>
+
+<script>
+    async function getWeather() {
+        const url = 'https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok';
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (!data || !data.hourly || !data.hourly.temperature_2m) {
+                throw new Error('Данные о погоде не получены или имеют неверный формат.');
+            }
+
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+            const currentDay = ('0' + currentDate.getDate()).slice(-2);
+
+            const temperatureAt8AM = data.hourly.temperature_2m[data.hourly.time.indexOf(`${currentYear}-${currentMonth}-${currentDay}T08:00`)];
+            const temperatureAt12PM = data.hourly.temperature_2m[data.hourly.time.indexOf(`${currentYear}-${currentMonth}-${currentDay}T12:00`)];
+            const temperatureAt8PM = data.hourly.temperature_2m[data.hourly.time.indexOf(`${currentYear}-${currentMonth}-${currentDay}T20:00`)];
+
+            document.getElementById('weather_data').innerHTML = `
+                <h2>Температура сегодня:</h2>
+                <p>В 8 утра: ${temperatureAt8AM} °C</p>
+                <p>В 12 дня: ${temperatureAt12PM} °C</p>
+                <p>В 8 вечера: ${temperatureAt8PM} °C</p>
+            `;
+        } catch (error) {
+            console.error('Ошибка получения данных о погоде:', error);
+            document.getElementById('weather_data').innerHTML = '<p>Ошибка загрузки данных о погоде.</p>';
+        }
+    }
+
+    window.onload = getWeather;
+</script>
+</body>
+</html>
