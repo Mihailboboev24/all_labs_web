@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Бобоев Михаил Ниматбоевич. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-48x48.png">
+    <style>
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+
+<main>
+    <table id="stock_table">
+        <thead>
+            <tr>
+                <th>Дата</th>
+                <th>Цена акций</th>
+                <th>Разница</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div id="stats">
+        <p>Среднее значение стоимости акции: <span id="average_price"></span></p>
+        <p>Максимальная стоимость акции: <span id="max_price"></span></p>
+        <p>Минимальная стоимость акции: <span id="min_price"></span></p>
+    </div>
+    <button id="show_stock_prices">Курс акций VK Group</button>
+</main>
+
+<footer>
+    &copy; Бобоев Михаил Ниматбоевич, ФБИ-24, 2 курс, 2024
+</footer>
+
+<script>
+    const stockPrices = [];
+
+    function showStockPrices() {
+        const tableBody = document.querySelector('#stock_table tbody');
+        tableBody.innerHTML = '';
+
+        for (let i = Math.max(0, stockPrices.length - 10); i < stockPrices.length; i++) {
+            const row = `
+                <tr>
+                    <td>${stockPrices[i].date}</td>
+                    <td>${stockPrices[i].price}</td>
+                    <td>${i === 0 ? '-' : (stockPrices[i].price - stockPrices[i - 1].price)}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        }
+
+        const sum = stockPrices.reduce((acc, curr) => acc + curr.price, 0);
+        const averagePrice = (sum / stockPrices.length).toFixed(2);
+        document.getElementById('average_price').textContent = averagePrice;
+
+        const maxPrice = Math.max(...stockPrices.map(item => item.price));
+        const minPrice = Math.min(...stockPrices.map(item => item.price));
+        document.getElementById('max_price').textContent = maxPrice;
+        document.getElementById('min_price').textContent = minPrice;
+    }
+
+    document.getElementById('show_stock_prices').addEventListener('click', showStockPrices);
+
+    stockPrices.push({ date: '2024-05-24', price: 200 });
+    stockPrices.push({ date: '2024-05-23', price: 195 });
+    stockPrices.push({ date: '2024-05-22', price: 198 });
+    stockPrices.push({ date: '2024-05-21', price: 203 });
+    stockPrices.push({ date: '2024-05-20', price: 201 });
+    stockPrices.push({ date: '2024-05-19', price: 197 });
+    stockPrices.push({ date: '2024-05-18', price: 202 });
+    stockPrices.push({ date: '2024-05-17', price: 199 });
+    stockPrices.push({ date: '2024-05-16', price: 203 });
+    stockPrices.push({ date: '2024-05-15', price: 205 });
+</script>
+</body>
+</html>
