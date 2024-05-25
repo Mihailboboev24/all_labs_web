@@ -44,6 +44,15 @@
             margin-right: 5px;
         }
 
+        .transparent-block {
+            background-color: red;
+            height: 40px;
+            border: 2px solid black;
+            margin: 10px 0;
+            box-sizing: border-box;
+            color: white;
+        }
+
         button {
             margin-bottom: 20px;
         }
@@ -92,6 +101,17 @@
                 main.appendChild(circle);
             }
         }
+
+        function addTransparentBlocks() {
+            let main = document.querySelector('main');
+            for (let i = 0; i < 10; i++) {
+                let newBlock = document.createElement('div');
+                newBlock.className = 'transparent-block';
+                newBlock.style.opacity = (i + 1) / 10;
+                newBlock.innerText = `Блок № ${i + 1}`;
+                main.appendChild(newBlock);
+            }
+        }
     </script>
 </head>
 <body>
@@ -105,6 +125,7 @@
         <button onclick="addNewBlocks()">Добавить блоки</button>
         <button onclick="add20_50()">>20 => 50</button>
         <button onclick="add10toMinus80()">10 => -80</button>
+        <button onclick="addTransparentBlocks()">Полупрозрачные блоки</button>
     </main>
 
     <footer>
