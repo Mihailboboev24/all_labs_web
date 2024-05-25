@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бобоев Михаил Ниматбоевич. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-48x48.png">
+
+    <style>
+        main {
+            padding: 20px;
+        }
+
+        .exchange-rate {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f0f0f0;
+        }
+
+        .exchange-rate h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .exchange-rate p {
+            margin: 5px 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <script>
+        async function getEuroExchangeRate() {
+            const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+            try {
+                let response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                let data = await response.json();
+                let euroRate = data.Valute.EUR.Value;
+                let previousEuroRate = data.Valute.EUR.Previous;
+                let date = new Date(data.Date).toLocaleDateString('ru-RU');
+                let previousDate = new Date(new Date(data.Date).setDate(new Date(data.Date).getDate() - 1)).toLocaleDateString('ru-RU');
+                let difference = (euroRate - previousEuroRate).toFixed(4);
+                let trend = difference > 0 ? 'вырос' : 'упал';
+
+                document.getElementById('rate-info').innerHTML = `
+                    <div class="exchange-rate">
+                        <h2>Курс евро на ${date}</h2>
+                        <p>Текущий курс: ${euroRate} ₽</p>
+                        <p>Курс на ${previousDate}: ${previousEuroRate} ₽</p>
+                        <p>Разница: ${difference} ₽ (${trend})</p>
+                        <a href="https://www.cbr-xml-daily.ru/">Курсы валют, API</a>
+                    </div>
+                `;
+
+                document.getElementById('fetch-button').classList.add('hidden');
+            } catch (error) {
+                console.error('Fetch error: ', error);
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+
+    <main>
+        <button id="fetch-button" onclick="getEuroExchangeRate()">Получить курс евро</button>
+        <div id="rate-info"></div>
+    </main>
+
+    <footer>
+        &copy; Бобоев Михаил Ниматбоевич, ФБИ-24, 2 курс, 2024
+    </footer>
+</body>
+</html>
