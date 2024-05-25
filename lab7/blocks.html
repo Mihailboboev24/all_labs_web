@@ -53,6 +53,17 @@
             color: white;
         }
 
+        .color-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+            color: white;
+        }
+
         button {
             margin-bottom: 20px;
         }
@@ -112,6 +123,22 @@
                 main.appendChild(newBlock);
             }
         }
+
+        function addColorCircles() {
+            let main = document.querySelector('main');
+            let numberOfCircles = parseInt(document.getElementById('numberOfCircles').value);
+            if (isNaN(numberOfCircles) || numberOfCircles <= 0) {
+                alert('Введите положительное число');
+                return;
+            }
+            for (let i = numberOfCircles; i > 0; i--) {
+                let circle = document.createElement('div');
+                circle.className = 'color-circle';
+                circle.innerText = i;
+                circle.style.backgroundColor = i % 2 === 0 ? 'green' : 'red';
+                main.appendChild(circle);
+            }
+        }
     </script>
 </head>
 <body>
@@ -126,6 +153,8 @@
         <button onclick="add20_50()">>20 => 50</button>
         <button onclick="add10toMinus80()">10 => -80</button>
         <button onclick="addTransparentBlocks()">Полупрозрачные блоки</button>
+        <input type="number" id="numberOfCircles" placeholder="Введите количество кругов" min="1">
+        <button onclick="addColorCircles()">Красное/зелёное</button>
     </main>
 
     <footer>
