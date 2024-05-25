@@ -20,7 +20,7 @@
             border: 2px solid black;
             margin: 10px 0;
             box-sizing: border-box;
-            color: red; 
+            color: red; /* Цвет текста внутри блоков */
         }
 
         .block-20-50 {
@@ -29,7 +29,19 @@
             border: 1px solid orange;
             margin: 5px 0;
             box-sizing: border-box;
-            color: white; 
+            color: white; /* Цвет текста внутри блоков */
+        }
+
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: purple;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
         }
 
         button {
@@ -70,6 +82,16 @@
                 main.appendChild(newBlock);
             }
         }
+
+        function add10toMinus80() {
+            let main = document.querySelector('main');
+            for (let i = 10; i >= -80; i -= 3) {
+                let circle = document.createElement('div');
+                circle.className = 'circle';
+                circle.innerText = i;
+                main.appendChild(circle);
+            }
+        }
     </script>
 </head>
 <body>
@@ -82,6 +104,7 @@
         <button onclick="addNewBlock()">Добавить блок</button>
         <button onclick="addNewBlocks()">Добавить блоки</button>
         <button onclick="add20_50()">>20 => 50</button>
+        <button onclick="add10toMinus80()">10 => -80</button>
     </main>
 
     <footer>
