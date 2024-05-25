@@ -20,6 +20,7 @@
             border: 2px solid black;
             margin: 10px 0;
             box-sizing: border-box;
+            color: red; /* Цвет текста внутри блоков */
         }
 
         button {
@@ -34,9 +35,21 @@
             document.querySelector('main').appendChild(newBlock);
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelector('button').addEventListener('click', addNewBlock);
-        });
+        function addNewBlocks() {
+            let main = document.querySelector('main');
+            let numberOfBlocks = parseInt(document.getElementById('numberOfBlocks').value);
+            if (isNaN(numberOfBlocks) || numberOfBlocks <= 0) {
+                alert('Введите положительное число');
+                return;
+            }
+            for (let i = 0; i < numberOfBlocks; i++) {
+                let newBlock = document.createElement('div');
+                newBlock.className = 'new-block';
+                newBlock.style.width = (200 + i * 20) + 'px';
+                newBlock.innerHTML = `Блок № ${i + 1}: 2*${i}<sup>2</sup> = ${2 * i **2}`;
+                main.appendChild(newBlock);
+            }
+        }
     </script>
 </head>
 <body>
@@ -45,7 +58,9 @@
     </header>
 
     <main>
-        <button>Добавить блок</button>
+        <input type="number" id="numberOfBlocks" placeholder="Введите количество блоков" min="1">
+        <button onclick="addNewBlock()">Добавить блок</button>
+        <button onclick="addNewBlocks()">Добавить блоки</button>
     </main>
 
     <footer>
