@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бобоев Михаил Ниматбоевич. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-48x48.png">
+
+    <style>
+        main {
+            padding: 20px;
+        }
+
+        .new-block {
+            background-color: green;
+            height: 40px;
+            border: 2px solid black;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <script>
+        function addNewBlock() {
+            let newBlock = document.createElement('div');
+            newBlock.className = 'new-block';
+            document.querySelector('main').appendChild(newBlock);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('button').addEventListener('click', addNewBlock);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+
+    <main>
+        <button>Добавить блок</button>
+    </main>
+
+    <footer>
+        &copy; Бобоев Михаил Ниматбоевич, ФБИ-24, 2 курс, 2024
+    </footer>
+</body>
+</html>
