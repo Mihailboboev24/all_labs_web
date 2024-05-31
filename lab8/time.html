@@ -26,6 +26,21 @@
                 text-align: center;
                 margin-top: 50px;
             }
+            #clock {
+                width: 5px;
+                height: 100px;
+                background-color: #000;
+                position: absolute;
+                left: 50%;
+                transform-origin: bottom center; 
+                transition: transform 0.5s ease-in-out; 
+            }
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                padding: 10px 0;
+            }
         </style>
 </head>
 <body>
@@ -36,7 +51,8 @@
       </header>
 
       <main onload="updateTime()">
-        <div id="current-seconds">00:00:00</div>
+        <div id="current-seconds"></div>
+        <div id="clock"></div>
       </main>
 
       <footer>

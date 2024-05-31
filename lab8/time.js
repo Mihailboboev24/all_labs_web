@@ -7,10 +7,11 @@ setInterval(showTime, 1000);
 
 function updateTime() {
     const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
+
     const seconds = String(now.getSeconds()).padStart(2, '0');
-    document.getElementById('current-seconds').textContent = `${hours}:${minutes}:${seconds}`;
+    const secondAngle = seconds * 6;
+    document.getElementById('current-seconds').textContent = `${seconds}`;
+    document.getElementById('clock').style.transform = `rotate(${secondAngle}deg)`;
 }
 
 setInterval(updateTime, 1000);
