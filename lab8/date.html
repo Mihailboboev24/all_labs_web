@@ -28,16 +28,22 @@
             font-size: 1.5em;
             margin-bottom: 1em;
         }
-        #locale-dates p, #date-info p {
+        #locale-dates p, #date-info p, #day-of-week-result {
             margin: 0.5em 0;
             font-size: 1.2em;
         }
         #locale-dates strong {
             color: #007BFF;
         }
+        .input-group {
+            margin-bottom: 1em;
+        }
+        .input-group label {
+            margin-right: 1em;
+        }
     </style>
 </head>
-<body onload="showDate()">
+<body>
     <header>
         НГТУ, ФБ, Лабораторная работа 8
     </header>
@@ -46,6 +52,21 @@
         <div id="current-date"></div>
         <div id="locale-dates"></div>
         <div id="date-info"></div>
+        
+        <div class="input-group">
+            <label for="input-day">День:</label>
+            <input type="number" id="input-day" min="1" max="31">
+        </div>
+        <div class="input-group">
+            <label for="input-month">Месяц:</label>
+            <input type="number" id="input-month" min="1" max="12">
+        </div>
+        <div class="input-group">
+            <label for="input-year">Год:</label>
+            <input type="number" id="input-year">
+        </div>
+        <button id="find-day-of-week-button">Определить день недели</button>
+        <div id="day-of-week-result"></div>
     </main>
 
     <footer>

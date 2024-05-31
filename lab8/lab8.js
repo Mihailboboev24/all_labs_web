@@ -33,3 +33,20 @@ function showDate() {
     `;
     document.getElementById('date-info').innerHTML = dateInfo;
 }
+
+function findDayOfWeek() {
+    const day = document.getElementById('input-day').value;
+    const month = document.getElementById('input-month').value - 1;
+    const year = document.getElementById('input-year').value;
+    
+    const date = new Date(year, month, day);
+    const weekDays = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+    const dayOfWeek = weekDays[date.getDay()];
+
+    document.getElementById('day-of-week-result').innerText = `День недели: ${dayOfWeek}`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    showDate();
+    document.getElementById('find-day-of-week-button').addEventListener('click', findDayOfWeek);
+});
